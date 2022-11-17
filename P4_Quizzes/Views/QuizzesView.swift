@@ -15,7 +15,11 @@ struct QuizzesView: View {
         NavigationStack {
             List {
                 ForEach(quizzesModel.quizzes) { quizItem in
-                    QuizRow(quizItem: quizItem)
+                    NavigationLink {
+                        QuizPlayView(quizItem: quizItem)
+                    } label : {
+                        QuizRow(quizItem: quizItem)
+                    }
                 }
             }
             .listStyle(.plain)
