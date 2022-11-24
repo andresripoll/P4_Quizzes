@@ -22,21 +22,32 @@ struct QuizPlayView: View {
         VStack {
             if hsc == .compact {
                 VStack {
-                    titulo
+                    HStack(alignment: .center, spacing: 5){
+                        titulo
+                        favorito
+                    }
                     respuesta
                     attatchment
                     footer
                 }
             } else {
-                HStack {
-                    titulo
-                    respuesta
-                    attatchment
+                VStack {
+                    HStack {
+                        VStack {
+                            HStack(alignment: .center, spacing: 5){
+                                titulo
+                                favorito
+                            }
+                            respuesta
+                        }
+                        
+                        attatchment
+                    }
                     footer
                 }
             }
         }
-        .navigationTitle("Jugando")
+        .navigationTitle("Play")
     }
     
     private var titulo: some View {
@@ -67,7 +78,7 @@ struct QuizPlayView: View {
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Resultado"),
                   message: Text(answer.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == quizItem.answer.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) ? "Bien" : "Mal"),
-                  dismissButton: .default(Text("ok"))
+                  dismissButton: .default(Text("Ok"))
             )
         }
     }
@@ -86,8 +97,10 @@ struct QuizPlayView: View {
     
     private var footer: some View {
         HStack {
-            Text("Puntos= \(scoresModel.acertadas.count)")
+            Text("Puntos: \(scoresModel.acertadas.count)")
                 .foregroundColor(.green)
+            
+            Spacer()
             
             Text(quizItem.author?.username ?? "Anónimo")
                 .font(.callout)
@@ -98,14 +111,15 @@ struct QuizPlayView: View {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.black, lineWidth: 1))
                 .shadow(radius: 15)
-            
-            Image(quizItem.favourite ? "star_yellow" : "star_grey")
-                .resizable()
-                .frame(width: 30, height:30)
-                .scaledToFit()
-                .foregroundColor(.white)
-                .padding()
         }
+        .padding()
+    }
+    
+    private var favorito: some View {
+        Image(quizItem.favourite ? "star_yellow" : "star_grey")
+            .resizable()
+            .frame(width: 35, height: 35)
+            .scaledToFit()
     }
 }
 
