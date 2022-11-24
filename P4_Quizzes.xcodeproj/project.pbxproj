@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		875A95B5292F6D49005590E6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875A95B4292F6D49005590E6 /* Storyboard.storyboard */; };
 		87BCD99A29267F3B0056F288 /* P4_QuizzesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCD99929267F3B0056F288 /* P4_QuizzesApp.swift */; };
 		87BCD99C29267F3B0056F288 /* QuizzesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCD99B29267F3B0056F288 /* QuizzesView.swift */; };
 		87BCD99E29267F3B0056F288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87BCD99D29267F3B0056F288 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		875A95B4292F6D49005590E6 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		87BCD99629267F3B0056F288 /* P4_Quizzes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P4_Quizzes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BCD99929267F3B0056F288 /* P4_QuizzesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P4_QuizzesApp.swift; sourceTree = "<group>"; };
 		87BCD99B29267F3B0056F288 /* QuizzesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				87BCD99929267F3B0056F288 /* P4_QuizzesApp.swift */,
 				87BCD99D29267F3B0056F288 /* Assets.xcassets */,
 				87BCD99F29267F3B0056F288 /* Preview Content */,
+				875A95B4292F6D49005590E6 /* Storyboard.storyboard */,
 			);
 			path = P4_Quizzes;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87BCD9A129267F3B0056F288 /* Preview Assets.xcassets in Resources */,
+				875A95B5292F6D49005590E6 /* Storyboard.storyboard in Resources */,
 				87BCD99E29267F3B0056F288 /* Assets.xcassets in Resources */,
 				87BCD9AD292687150056F288 /* quizzes.json in Resources */,
 			);
@@ -332,6 +336,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = Storyboard.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +365,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = Storyboard.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

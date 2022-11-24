@@ -17,7 +17,10 @@ struct QuizItem: Codable, Identifiable {
     
     struct Author: Codable {
         let isAdmin: Bool?
-        let username: String
+        let username: String?
+        let accountTypeId: Int?
+        let profileId: Decimal?
+        let profileName: String?
         let photo: Attachment?
     }
     
