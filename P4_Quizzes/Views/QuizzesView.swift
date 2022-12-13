@@ -24,9 +24,16 @@ struct QuizzesView: View {
             }
             .listStyle(.plain)
             .navigationTitle("P4 Quizzes")
-            .onAppear {
-                quizzesModel.load()
+            .task {
+                if quizzesModel.quizzes.count == 0 {
+                    await quizzesModel.download3()
+                }
             }
+            //.onAppear {
+            //   if quizzesModel.quizzes.count == 0 {
+            //        quizzesModel.download() ó quizzesModel.download2()
+            //    }
+            //}
         }
     }
 }
