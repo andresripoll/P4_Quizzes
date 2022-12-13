@@ -15,6 +15,7 @@ struct QuizPlayView: View {
     
     @State var answer: String = ""
     @EnvironmentObject var scoresModel: ScoresModel
+    @EnvironmentObject var quizzesModel: QuizzesModel
     
     @State var showAlert = false
     
@@ -116,10 +117,14 @@ struct QuizPlayView: View {
     }
     
     private var favorito: some View {
-        Image(quizItem.favourite ? "star_yellow" : "star_grey")
-            .resizable()
-            .frame(width: 35, height: 35)
-            .scaledToFit()
+        Button {
+            quizzesModel.toggleFav(quizItemId: quizItem.id)
+        } label: {
+            Image(quizItem.favourite ? "star_yellow" : "star_grey")
+                .resizable()
+                .frame(width: 35, height: 35)
+                .scaledToFit()
+        }
     }
 }
 

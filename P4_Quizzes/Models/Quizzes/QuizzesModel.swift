@@ -13,6 +13,8 @@ class QuizzesModel: ObservableObject {
     private let quizzesPath = "api/quizzes/random10wa?token"
     private let token = "15cdf17a460f3d0828ee"
     
+    private let favPath = "api/users/tokenOwner/favourites"
+    
     // Los datos
     @Published private(set) var quizzes = [QuizItem]()
     
@@ -28,9 +30,9 @@ class QuizzesModel: ObservableObject {
             let data = try Data(contentsOf: jsonURL)
             let decoder = JSONDecoder()
             
-//            if let str = String(data: data, encoding: String.Encoding.utf8) {
-//                print("Quizzes ==>", str)
-//            }
+                //if let str = String(data: data, encoding: String.Encoding.utf8) {
+                //  print("Quizzes ==>", str)
+                //}
             
             let quizzes = try decoder.decode([QuizItem].self, from: data)
             
@@ -44,6 +46,17 @@ class QuizzesModel: ObservableObject {
     
     func endpoint() -> URL? {
         let surl = "\(urlbase)/\(quizzesPath)=\(token)"
+                
+        guard let url = URL(string: surl) else {
+            print("Internal error 1")
+            return nil
+        }
+        
+        return url
+    }
+    
+    func endpointFav(quizId: Int) -> URL? {
+        let surl = "\(urlbase)/\(favPath)/\(quizId)?token=\(token)"
                 
         guard let url = URL(string: surl) else {
             print("Internal error 1")
@@ -115,5 +128,34 @@ class QuizzesModel: ObservableObject {
         } else {
             print("Fallo terrible")
         }
+    }
+    
+    func toggleFav(quizItemId: Int) {
+        
+        guard let index = (quizzes.firstIndex{ qi in qi.id == quizItemId }) else {
+            print("No encontrado")
+            return
+        }
+        
+        guard let url = endpointFav(quizId: quizItemId) else { return }
+    
+        var req = URLRequest(url: url)
+        req.httpMethod = quizzes[index].favourite ? "DELETE" : "PUT"
+        
+        URLSession.shared.uploadTask(with: req, from: Data()) { _, response, error in
+            
+            guard error == nil,
+                  let response = response as? HTTPURLResponse,
+                  response.statusCode == 200 else {
+                print("Fallo FAV 1")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.quizzes[index].favourite.toggle()
+            }
+            
+        }
+        .resume()
     }
 }
