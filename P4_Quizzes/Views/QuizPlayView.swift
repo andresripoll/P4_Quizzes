@@ -14,6 +14,8 @@ struct QuizPlayView: View {
     @Environment(\.horizontalSizeClass) var hsc
     
     @State var answer: String = ""
+    @State var angulo = 0.0
+    @State var escala = 1.0
     @EnvironmentObject var scoresModel: ScoresModel
     @EnvironmentObject var quizzesModel: QuizzesModel
     
@@ -92,6 +94,19 @@ struct QuizPlayView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 3))
                 .shadow(radius: 15)
+                .rotationEffect(Angle(degrees: angulo))
+                .scaleEffect(escala)
+                .onTapGesture(count: 2) {
+                    answer = quizItem.answer
+                    withAnimation(.easeInOut(duration: 0.75)) {
+                        angulo += 360
+                        escala = 0
+                    }
+                    withAnimation(.easeInOut(duration: 0.75).delay(1.5)) {
+                        angulo -= 360
+                        escala = 1.0
+                    }
+                }
         }
         .padding()
     }
@@ -112,6 +127,14 @@ struct QuizPlayView: View {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color.black, lineWidth: 1))
                 .shadow(radius: 15)
+                .contextMenu{
+                    Button("Limpiar") {
+                        answer = ""
+                    }
+                    Button("Rellenar") {
+                        answer = quizItem.answer
+                    }
+                }
         }
         .padding()
     }
