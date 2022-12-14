@@ -1,1 +1,6 @@
 Autor de la práctica: Andrés Ripoll Cabrera
+Identificador de la cuenta: b106
+Se han realizado todas las mejoras: *Menú contextual
+				    *Gestos y animaciones
+				    *Filtrar acertados
+				    *Record persistente
